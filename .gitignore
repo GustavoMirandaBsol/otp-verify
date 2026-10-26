@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vite/
+.superpowers/
+**/bin/
+**/obj/
+**/data/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+*.db
+*.db-shm
+*.db-wal

@@ -1,0 +1,13 @@
+using System.Text.Json.Serialization;
+namespace OtpSupport.Api.Models;
+public record LoginRequest(string Password);
+public record MessageLookupRequest(string MessageSid);
+public record VerificationLookupRequest(string VerificationSid);
+public record ResendRequest(string CaseId, string Phone, string Reason, bool CustomerRequested, bool IdentityVerified, string? VerificationSid);
+public record ApiError(string Error, string? Detail = null);
+public record TwilioMessage(string Sid, string Status, string? ErrorCode, string? ErrorMessage, string? To, string? From, string? DateCreated, string? DateSent, string? DateUpdated, string? Channel);
+public record TwilioVerification(string Sid, string Status, string? To, string? Channel, string? DateCreated, string? DateUpdated);
+public record TwilioVerificationAttempt(string Sid, string VerificationSid, string ConversionStatus, string Channel, string? DateCreated, string? DateUpdated, string MessageStatus, string AttemptStatus, string? ErrorCode, string To);
+public record VerificationAttemptSearchItem(TwilioVerificationAttempt Attempt, Diagnosis Diagnosis);
+public record Diagnosis(string Category, string Severity, string Explanation, string Recommendation);
+public record AuditEvent(long Id, string AtUtc, string Operator, string Action, string CaseId, string PhoneMasked, string Outcome, string Detail);
